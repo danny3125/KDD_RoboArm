@@ -20,6 +20,6 @@ def sides_in_matrix(matrix,startpoint_x, startpoint_y ):
     return sides_of_matrix
     
 test = cnc_input.main(['-i','right_chip.json'])
-print(test[2][0])
-plt.imshow(test[6][0], cmap = plt.get_cmap('gray'))
+print(test[9][0])
+plt.imshow(test[9][0], cmap = plt.get_cmap('gray'))
 A_walkonchip(test)

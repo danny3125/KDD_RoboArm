@@ -45,13 +45,11 @@ def main(argv = None):
                     # 讓目標區域的高度值統一
                     temp = []
                     for i in range(len(target_area[0])):
-                        if (target_area[0][i] == target_area[int(target_area.shape[0]/2)][i]):
+                        if (target_area[int(target_area.shape[0]/3)][i] == target_area[int(target_area.shape[0]/2)][i]):
                             temp.append(i)
-                    if len(temp) > int(len(target_area[0])/2):
-                        for i in range(target_area.shape[0]):
-                                       for j in range(target_area.shape[1]):
-                                           if target_area[i][j] != target_area[int(target_area.shape[0]/2)][temp[0]]:
-                                               target_area[i][j] = target_area[int(target_area.shape[0]/2)][temp[0]]
+                    if len(temp) > int(target_area.shape[0]/2):
+                        n,m = target_area.shape
+                        target_area = [[target_area[0][temp[0]]] * m for i in range(n)]
                     #讓目標區域的高度值統一                      
                     target_areas.append((target_area,start_point[0],start_point[1]))
                 return target_areas
