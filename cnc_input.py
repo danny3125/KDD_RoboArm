@@ -31,7 +31,6 @@ def main(argv = None):
                           help='output file to the output path')
         parser.add_option('-q', '--quiet', action='store_true', dest='quietMode', help='quiet mode', default=False)
         (options, args) = parser.parse_args(argv)
-        
         if options.input:
             try:
                 with open(options.input, 'r') as file:
@@ -43,6 +42,17 @@ def main(argv = None):
                     start_point = item['points'][0]
                     end_point = item['points'][2]
                     target_area = cnc_input.target_area(photo, start_point[0],start_point[1],end_point[0],end_point[1])
+                    # 讓目標區域的高度值統一
+                    temp = []
+                    for i in range(len(target_area[0])):
+                        if (target_area[0][i] == target_area[int(target_area.shape[0]/2)][i]):
+                            temp.append(i)
+                    if len(temp) > int(len(target_area[0])/2):
+                        for i in range(target_area.shape[0]):
+                                       for j in range(target_area.shape[1]):
+                                           if target_area[i][j] != target_area[0][temp[0]]:
+                                               target_area[i][j] = target_area[0][temp[0]]
+                    #讓目標區域的高度值統一                      
                     target_areas.append((target_area,start_point[0],start_point[1]))
                 return target_areas
             except Exception as e:
