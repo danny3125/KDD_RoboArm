@@ -50,8 +50,8 @@ def main(argv = None):
                     if len(temp) > int(len(target_area[0])/2):
                         for i in range(target_area.shape[0]):
                                        for j in range(target_area.shape[1]):
-                                           if target_area[i][j] != target_area[0][temp[0]]:
-                                               target_area[i][j] = target_area[0][temp[0]]
+                                           if target_area[i][j] != target_area[int(target_area.shape[0]/2)][temp[0]]:
+                                               target_area[i][j] = target_area[int(target_area.shape[0]/2)][temp[0]]
                     #讓目標區域的高度值統一                      
                     target_areas.append((target_area,start_point[0],start_point[1]))
                 return target_areas
